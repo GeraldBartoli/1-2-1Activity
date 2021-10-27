@@ -27,6 +27,7 @@ shape = "triangle"
 size = 2
 fontSetup = ("Arial", 20, "normal")
 timer = 30
+colors = "red", "blue", "purple", "yellow"
 
 # -----initialize turtle-----
 turtle = trtl.Turtle()
@@ -34,10 +35,10 @@ turtle.shape(shape)
 turtle.turtlesize(size)
 turtle.fillcolor(color)
 scoreWriter = trtl.Turtle()
-scoreWriter.goto(300,-300)
+scoreWriter.goto(300, -300)
 
 counter = trtl.Turtle()
-counter
+counter.goto(-300, -300)
 
 
 # -----game functions--------
@@ -48,25 +49,26 @@ def spot_clicked(x, y):
 
 def scoreChange():
     global score
-    #score += 1
+    score += 1
     scoreWriter.clear()
-    scoreWriter.Write(score, font=fontSetup)
+    scoreWriter.write(score, font=fontSetup)
     print(score)
 
-    print("It worked.")
 def countdown():
     global timer, timerUp
     counter.clear()
     if timer <=0:
-        counter.write("Times Up", font=fontSetup)
+        counter.write("Time's Up", font=fontSetup)
         timerUp = True
     else:
         counter.write("Timer: " + str(timer), font=fontSetup)
         timer -= 1
-        counter.getscreen().ontimer(counter, counterInterval)
+        counter.getscreen().ontimer(countdown, counterInterval)
+
 # -----events----------------
 turtle.onclick(spot_clicked)
 
 wn = trtl.Screen()
+wn.bgcolor("lightblue")
 wn.ontimer(countdown, counterInterval)
 wn.mainloop()
