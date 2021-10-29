@@ -27,8 +27,8 @@ shape = "triangle"
 size = 2
 fontSetup = ("Arial", 20, "normal")
 timer = 30
-colors = ("red", "blue", "purple", "yellow")
-sizes = (2, 4, 6, 8, 10, 12)
+colors = ["red", "blue", "purple", "yellow"]
+sizes = [2, 4, 6, 8, 10, 12]
 
 
 # -----initialize turtle-----
@@ -44,14 +44,14 @@ counter.goto(-300, -300)
 
 
 # -----game functions--------
-turtle.start_game
+
 def spot_clicked(x, y):
     turtle.goto(rand.randint(xMin, xMax), rand.randint(yMin, yMax))
     scoreChange()
     turtle.stamp()
-    rand.choice(colors)
-    rand.choice(sizes)    
-    turtle.fillcolor(color)
+    chosencolor=rand.choice(colors)
+    rand.choice(sizes)
+    turtle.fillcolor(chosencolor)
 
 def scoreChange():
     global score
