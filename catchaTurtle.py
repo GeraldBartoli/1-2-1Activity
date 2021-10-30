@@ -44,14 +44,14 @@ counter.goto(-300, -300)
 
 
 # -----game functions--------
-
 def spot_clicked(x, y):
     turtle.goto(rand.randint(xMin, xMax), rand.randint(yMin, yMax))
     scoreChange()
     turtle.stamp()
     chosencolor=rand.choice(colors)
-    rand.choice(sizes)
+    chosensize=rand.choice(sizes)
     turtle.fillcolor(chosencolor)
+    turtle.size(chosensize)
 
 def scoreChange():
     global score
